@@ -1,9 +1,14 @@
 {
-  "name": "server",
+  "name": "brevly-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/http/server.ts",
+    "build": "tsc",
+    "start": "node dist/http/server.js",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate"
   },
   "keywords": [],
   "author": "",

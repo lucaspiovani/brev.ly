@@ -1,5 +1,4 @@
 import "reflect-metadata"; // precisa ser o primeiro import (requisito do tsyringe)
-import "../shared/container"; // registra as dependências no container antes de qualquer outra coisa
 
 import { buildApp } from "./app";
 import { env } from "../env";
