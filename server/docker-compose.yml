@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: brevly-pg
+    environment:
+      POSTGRES_USER: brevly
+      POSTGRES_PASSWORD: brevly
+      POSTGRES_DB: brevly
+    ports:
+      - "5432:5432"
+    volumes:
+      - brevly-pg-data:/var/lib/postgresql/data
+
+volumes:
+  brevly-pg-data:
