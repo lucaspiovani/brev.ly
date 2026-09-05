@@ -1,0 +1,22 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+
+# Variáveis de ambiente (nunca commitar credenciais reais)
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+
+# SO
+.DS_Store
+Thumbs.db

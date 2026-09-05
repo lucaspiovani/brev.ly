@@ -76,12 +76,12 @@ server/
 
 ```bash
 cd server
-cp .env.example .env       # preencher DATABASE_URL e credenciais do R2/S3
-npm install
+cp .env.example .env        # preencher DATABASE_URL e credenciais do R2/S3
+pnpm install
 docker compose up -d        # sobe o Postgres local
-npm run db:generate         # gera as migrations a partir do schema
-npm run db:migrate          # aplica as migrations
-npm run dev                 # inicia o servidor em modo watch (http://localhost:3333)
+pnpm run db:generate        # gera as migrations a partir do schema
+pnpm run db:migrate         # aplica as migrations
+pnpm run dev                # inicia o servidor em modo watch (http://localhost:3333)
 ```
 
 ---
