@@ -9,4 +9,5 @@ export abstract class LinksRepository {
   abstract findById(id: string): Promise<Link | null>;
   abstract delete(id: string): Promise<void>;
   abstract findAll(): Promise<Link[]>;
+  abstract incrementAccessCount(id: string): Promise<void>;
 }

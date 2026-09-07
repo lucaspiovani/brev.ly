@@ -5,6 +5,8 @@ import { ZodError } from 'zod'
 import { AppError } from "../shared/errors/app-error";
 import { deleteLinkRoute } from "./routes/delete-link.route";
 import { listLinksRoute } from "./routes/list-link.route";
+import { findUrlOriginalLinkRoute } from "./routes/findUrlOriginal-link.route";
+import { exportLinksRoute } from "./routes/export-link.route";
 
 export function buildApp() {
   const app = Fastify({ logger: true });
@@ -23,6 +25,8 @@ export function buildApp() {
   app.register(createLinkRoute);
   app.register(deleteLinkRoute);
   app.register(listLinksRoute);
+  app.register(findUrlOriginalLinkRoute);
+  app.register(exportLinksRoute);
   app.setErrorHandler((error, _request, reply) => {
     console.log(error);
     if (error instanceof AppError) {

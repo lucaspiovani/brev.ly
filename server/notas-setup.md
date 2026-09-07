@@ -6,3 +6,4 @@ docker compose up -d
 docker ps
 cp .env.example .env
 pnpm exec drizzle-kit generate
+pnpm add @aws-sdk/client-s3

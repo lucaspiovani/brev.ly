@@ -4,7 +4,7 @@ import { links } from "./schema";
 import { LinksRepository } from "../../modules/links/repositories/links-repository";
 import { CreateLinkDTO } from "../../modules/links/dtos/create-link.dto";
 import { Link } from "../../modules/links/entities/link";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 @injectable()
 export class DrizzleLinksRepository implements LinksRepository {
@@ -32,5 +32,12 @@ export class DrizzleLinksRepository implements LinksRepository {
 
   async findAll(): Promise<Link[]> {
     return db.select().from(links).orderBy(links.createdAt);
+  }
+
+  async incrementAccessCount(id: string): Promise<void> {
+    await db
+      .update(links)
+      .set({ accessCount: sql`${links.accessCount} + 1` })
+      .where(eq(links.id, id));
   }
 }
