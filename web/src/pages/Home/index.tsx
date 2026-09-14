@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 import { createLinkSchema, type CreateLinkFormData } from "../../schemas/create-link.schema";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { LinksList } from "../../components/LinksList";
 import { api } from "../../services/api";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 
 export function Home() {
   const {
@@ -22,23 +23,24 @@ export function Home() {
     },
   });
 
- 
+  const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation({
-  mutationFn: (data: CreateLinkFormData) => api.post("/links", data),
-  onSuccess: () => {
-    reset();
-  },
-  onError: (error) => {
-  const message = axios.isAxiosError(error)
-    ? error.response?.data?.message
-    : "Erro inesperado ao salvar o link.";
+    mutationFn: (data: CreateLinkFormData) => api.post("/links", data),
+    onSuccess: () => {
+      reset();
+      queryClient.invalidateQueries({ queryKey: ["links"] });
+    },
+    onError: (error) => {
+      const message = axios.isAxiosError(error)
+        ? error.response?.data?.message
+        : "Erro inesperado ao salvar o link.";
 
-  setError("shortUrl", { message });
-},
-});
+      setError("shortUrl", { message });
+    },
+  });
 
- function onSubmit(data: CreateLinkFormData) {
+  function onSubmit(data: CreateLinkFormData) {
     mutate(data);
   }
 
@@ -62,6 +64,7 @@ export function Home() {
           Salvar link
         </Button>
       </form>
+      <LinksList />
     </div>
   );
 }
