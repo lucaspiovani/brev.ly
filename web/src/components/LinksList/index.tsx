@@ -1,5 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { api } from "../../services/api";
+import { LinkItem } from "../LinkItem";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface Link {
   id: string;
@@ -10,6 +11,15 @@ interface Link {
 }
 
 export function LinksList() {
+  const queryClient = useQueryClient();
+
+  const { mutate: deleteLink } = useMutation({
+    mutationFn: (id: string) => api.delete(`/links/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["links"] });
+    },
+  });
+
   const { data: links, isLoading } = useQuery({
     queryKey: ["links"],
     queryFn: async () => {
@@ -50,7 +60,7 @@ export function LinksList() {
   return (
     <ul className="flex flex-col gap-2">
       {links.map((link) => (
-        <li key={link.id}>{link.shortUrl}</li>
+        <LinkItem key={link.id} link={link} onDelete={deleteLink} />
       ))}
     </ul>
   );
