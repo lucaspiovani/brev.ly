@@ -13,6 +13,7 @@ export function buildApp() {
 
   app.register(cors, {
     origin: true, // TODO: restringir ao VITE_FRONTEND_URL quando o front estiver definido
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   });
 
   app.get("/health", async () => {
