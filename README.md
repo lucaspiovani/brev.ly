@@ -6,6 +6,7 @@ Permite o cadastro, listagem e remoção de links encurtados, geração de relat
 de acessos de cada link e redirecionamento do link encurtado para a URL original.
 
 ## Estrutura do repositório
+```
 brev.ly/
 ├── server/ → API (Back-end) + Docker (DevOps)
 ├── web/ → Aplicação React (Front-end)
@@ -14,6 +15,7 @@ O repositório segue a divisão exigida pelo desafio: `server` concentra a
 resolução dos desafios de Back-end e DevOps, `web` concentra a resolução do
 desafio de Front-end.
 
+```
 ---
 
 ## 📁 server (Back-end)
