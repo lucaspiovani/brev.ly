@@ -13,6 +13,16 @@ Aplicação FullStack de encurtador de URLs, desenvolvida como desafio da pós-g
 Permite o cadastro, listagem e remoção de links encurtados, geração de relatório
 de acessos de cada link e redirecionamento do link encurtado para a URL original.
 
+## Pré-requisitos
+
+Antes de rodar o projeto, você precisa ter instalado:
+
+- [Node.js](https://nodejs.org/) (v18 ou superior)
+- [pnpm](https://pnpm.io/installation)
+- [Docker](https://www.docker.com/) e Docker Compose (para o banco de dados local)
+- Uma conta no [Cloudflare R2](https://developers.cloudflare.com/r2/) (para armazenamento dos CSVs exportados)
+
+
 ## Estrutura do repositório
 ```
 brev.ly/
