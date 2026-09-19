@@ -136,6 +136,7 @@ docker run -p 3333:3333 \
 | `/:shortUrl` | Resolução e redirecionamento do link |
 | `*` | Página de recurso não encontrado (404) |
 
+```
 web/
 ├── src/
 │ ├── pages/
@@ -155,6 +156,7 @@ web/
 │ └── App.tsx # definição das rotas
 ├── .env.example
 └── vite.config.ts
+```
 
 **Como rodar:**
 
